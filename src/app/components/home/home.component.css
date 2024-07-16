@@ -1,0 +1,146 @@
+/*overriding AM styles*/
+
+::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+/*end of Overring scope*/
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.task-manager-container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+.header {
+    /* background-color: #f0f0f0; */
+    /* Example background color */
+    /* padding: 10px; */
+    text-align: right;
+}
+
+.content {
+    flex-grow: 1;
+    /* Take remaining vertical space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-list-container {
+    max-height: 200px;
+    min-height: 200px;
+    overflow-y: auto;
+    margin-top: 20px;
+    width: 80%;
+}
+
+.footer {
+    /* background-color: #f0f0f0; */
+    /* Example background color */
+    padding: 0px;
+    text-align: center;
+}
+
+.small-text {
+    font-size: 0.75rem;
+}
+
+.create-button {
+    border-radius: 0px 4px 4px 0px;
+    height: 54px;
+    border: none;
+    box-shadow: none;
+    margin-top: -3px;
+    outline: 1px solid;
+    width: 112px;
+}
+
+.form-container {
+    width: 100%;
+    text-align: center;
+}
+
+.form-field {
+    width: 70%;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.mlast {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+}
+
+.animated-text {
+    height: 52px;
+}
+
+.current-time {
+    font-size: 1.5em;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.edit-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    font-size: 21px;
+    margin-top: 1px;
+}
+
+.cancel-icon {
+    cursor: pointer;
+}
+
+.edit-icon:hover,
+.close-icon:hover,
+.cancel-icon:hover {
+    color: #c00100;
+}
+
+.mic-button {
+    position: absolute;
+    right: 0;
+    top: 9px;
+}
+
+.stop-mic-button {
+    position: absolute;
+    right: 35px;
+    top: 9px;
+}
+
+.task-input-field {
+    max-width: 88%;
+}
+
+/*animations*/
+button[mat-icon-button] {
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+button[mat-icon-button].recording {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px red;
+}
+
+button[mat-icon-button]:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}

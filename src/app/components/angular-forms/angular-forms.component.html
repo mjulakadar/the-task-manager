@@ -1,0 +1,139 @@
+<div class="example-container title-container">
+    <h4><strong>Angular Forms</strong></h4>
+</div>
+
+<div class="example-container">
+    <h6>1. Angular Froms</h6>
+    <p>
+        In Angular, there are two primary approaches to handling forms: Template-Driven Forms and Reactive Forms. Both
+        approaches are used to capture and validate user input, but they have different philosophies and use cases.
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>2. Template-Driven Forms</h6>
+    <p>
+        Template-driven forms are simpler and suitable for simple forms. They rely heavily on Angular's directives and
+        the template itself to handle the form.
+    </p>
+
+    <div class="show-example-container text-normal">
+        <h6>Create New Task</h6>
+        <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Title</mat-label>
+                <input matInput type="text" id="title" name="title" [(ngModel)]="task.title" required>
+                <mat-error *ngIf="taskForm.controls['title']?.invalid && taskForm.controls['title']?.touched">
+                    Title is required.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput id="description" name="description" [(ngModel)]="task.description"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Priority</mat-label>
+                <mat-select id="priority" name="priority" [(ngModel)]="task.priority" required>
+                    <mat-option value="High">High</mat-option>
+                    <mat-option value="Medium">Medium</mat-option>
+                    <mat-option value="Low">Low</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Due Date</mat-label>
+                <input matInput [matDatepicker]="picker" id="dueDate" name="dueDate" [(ngModel)]="task.dueDate"
+                    required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="taskForm.controls['dueDate']?.invalid && taskForm.controls['dueDate']?.touched">
+                    Due date is required.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Status</mat-label>
+                <mat-select id="status" name="status" [(ngModel)]="task.status" required>
+                    <mat-option value="Pending">Pending</mat-option>
+                    <mat-option value="In Progress">In Progress</mat-option>
+                    <mat-option value="Completed">Completed</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">Create Task</button>
+        </form>
+
+        <br>
+        <div *ngIf="submittedTaskUsingTemplateDrivenForm">
+            <strong>You submitted the following data: </strong>
+            <pre>{{ submittedTaskUsingTemplateDrivenForm | json }}</pre>
+        </div>
+    </div>
+</div>
+
+<div class="example-container">
+    <h6>3. Reactive Forms</h6>
+    <p>
+        Provides more control and flexibility, suitable for complex forms, defined programmatically in the component,
+        uses explicit form control objects for validation and data management
+    </p>
+
+    <div class="show-example-container text-normal">
+        <h6>Create New Task</h6>
+        <form [formGroup]="taskReactiveForm" (ngSubmit)="onReactiveFormSubmit()">
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title">
+                <mat-error *ngIf="taskReactiveForm.get('title')?.invalid && taskReactiveForm.get('title')?.touched">
+                    Title is required.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Priority</mat-label>
+                <mat-select formControlName="priority">
+                    <mat-option value="High">High</mat-option>
+                    <mat-option value="Medium">Medium</mat-option>
+                    <mat-option value="Low">Low</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Due Date</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="dueDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="taskReactiveForm.get('dueDate')?.invalid && taskReactiveForm.get('dueDate')?.touched">
+                    Due date is required.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option value="Pending">Pending</mat-option>
+                    <mat-option value="In Progress">In Progress</mat-option>
+                    <mat-option value="Completed">Completed</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="taskReactiveForm.invalid">Create Task</button>
+        </form>
+
+        <br>
+        <div *ngIf="submittedTaskUsingReactiveForm">
+            <strong>You submitted the following data: </strong>
+            <pre>{{ submittedTaskUsingReactiveForm | json }}</pre>
+        </div>
+    </div>
+</div>
+
+<div class="example-end-container">
+</div>

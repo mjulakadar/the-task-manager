@@ -1,0 +1,179 @@
+<div class="example-container title-container">
+    <h4><strong>HTTP, Observables and RxJS</strong></h4>
+</div>
+
+<div class="example-container">
+    <h6>1. Basics of HttpClient</h6>
+    <p>
+        The <strong>HttpClient</strong> module in Angular is a service that allows you to make HTTP requests to interact
+        with RESTful
+        APIs. It is a part of the <strong>&#64;angular/common/http</strong> package and provides methods to handle HTTP
+        requests.
+    </p>
+    <br>
+    <p><strong>Setting Up HttpClient</strong></p>
+    <p>
+        <strong>1. Import HttpClientModule:</strong>
+        First, import <strong>HttpClientModule</strong> in your <strong>AppModule.</strong>
+        <app-code-box [code_snippet]="_code_snippet_http_client_module"></app-code-box>
+    </p>
+    <p>
+        <strong>2. Inject HttpClient: </strong>
+        Inject <strong>HttpClient</strong> in your service or component where you want to make HTTP requests.
+        <app-code-box [code_snippet]="_code_snippet_inject_http_client"></app-code-box>
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>2. Interacting with APIs (GET, POST, PUT, DELETE)</h6>
+    <p>
+        The <strong>HttpClient</strong> service provides methods for making HTTP requests, such as <strong>GET</strong>,
+        <strong>POST</strong>, <strong>PUT</strong>, and <strong>DELETE</strong>.
+    </p>
+
+    <br>
+    <p>
+        <strong>GET Request</strong>
+        <app-code-box [code_snippet]="_code_snippet_get"></app-code-box>
+    </p>
+
+    <br>
+    <p>
+        <strong>POST Request</strong>
+        <app-code-box [code_snippet]="_code_snippet_post"></app-code-box>
+    </p>
+
+    <br>
+    <p>
+        <strong>PUT Request</strong>
+        <app-code-box [code_snippet]="_code_snippet_put"></app-code-box>
+    </p>
+
+    <br>
+    <p>
+        <strong>DELETE Request</strong>
+        <app-code-box [code_snippet]="_code_snippet_delete"></app-code-box>
+    </p>
+
+    <div class="show-example-container text-normal">
+        <div>
+            <p><strong>Posts</strong></p>
+            <ul>
+                <li *ngFor="let post of posts">
+                    <strong>{{post.id}}:</strong> {{ post.title }} by {{ post.author }}
+                    <button (click)="deletePost(post.id)">Delete</button>
+                </li>
+            </ul>
+
+            <p><strong>Add Post</strong></p>
+            <div>
+                <label>Title:
+                    <input [(ngModel)]="newPost.title" placeholder="Title">
+                </label>
+                <label>Author:
+                    <input [(ngModel)]="newPost.author" placeholder="Author">
+                </label>
+                <button (click)="addPost()">Add Post</button>
+            </div>
+
+            <p><strong>Update Post</strong></p>
+            <div>
+                <label>ID:
+                    <input [(ngModel)]="updatedPost.id" type="number" placeholder="ID">
+                </label>
+                <label>Title:
+                    <input [(ngModel)]="updatedPost.title" placeholder="Title">
+                </label>
+                <label>Author:
+                    <input [(ngModel)]="updatedPost.author" placeholder="Author">
+                </label>
+                <button (click)="updatePost()">Update Post</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="example-container">
+    <h6>3. Understanding Observables and Promises</h6>
+    <p>
+        <strong>Observables</strong> are a key part of RxJS (Reactive Extensions for JavaScript) and provide support for
+        handling asynchronous data streams.
+    </p>
+    <p>Observables are lazy, meaning they do not start emitting values until subscribed to.</p>
+    <p>Observables can handle multiple values over time and can be canceled.</p>
+
+    <br>
+    <p>
+        <strong>Example of Observable:</strong>
+        <app-code-box [code_snippet]="_code_snippet_observables"></app-code-box>
+    </p>
+    <br>
+    <p>
+        <strong>Promises </strong> are used to handle a single asynchronous event.
+        <app-code-box [code_snippet]="_code_snippet_observables"></app-code-box>
+    </p>
+    <p>Promises are eager, meaning they start immediately when created.</p>
+    <p>Promises can only resolve or reject once.</p>
+    <p>
+        <strong>Example of Promise:</strong>
+        <app-code-box [code_snippet]="_code_snippet_promises"></app-code-box>
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>3. Basics of RxJS</h6>
+    <p>
+        RxJS is a library for reactive programming using Observables, allowing for powerful asynchronous event handling.
+    </p>
+
+    <br>
+    <p>
+        <strong>Common RxJS Operators</strong>
+    </p>
+    <p>
+        <strong>1. map:</strong> Transforms the items emitted by an Observable by applying a function to each item.
+        <app-code-box [code_snippet]="_code_snippet_map"></app-code-box>
+    </p>
+    <p>
+        <strong>2. filter:</strong> Filters items emitted by an Observable by only allowing items that pass a predicate
+        function.
+        <app-code-box [code_snippet]="_code_snippet_filter"></app-code-box>
+    </p>
+    <p>
+        <strong>3. switchMap:</strong> Projects each source value to an Observable which is merged in the output
+        Observable, emitting values only from the most recently projected Observable.
+        <app-code-box [code_snippet]="_code_snippet_switchMap"></app-code-box>
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>4. Example: Combining HTTPClient with RxJS</h6>
+    <p>
+        Combining <strong>HttpClient</strong> with <strong>RxJS</strong> allows you to handle complex asynchronous
+        scenarios effectively.
+    </p>
+
+    <p>
+        <strong>Example: Fetching Data and Transforming It</strong>
+        <app-code-box [code_snippet]="_code_snippet_http_with_rxjs"></app-code-box>
+    </p>
+    <p>By understanding the basics of <strong>HttpClient</strong>, Observables, and RxJS, you can effectively interact
+        with APIs and handle asynchronous operations in Angular.</p>
+
+    <br>
+
+    <strong> <i>Following data is coming from json-server: </i></strong>
+    <ul *ngIf="posts.length > 0; else noPosts">
+        <li *ngFor="let post of posts" class="post">
+            <strong>post: </strong> {{post.title}}, <strong>author: </strong> {{post.author}}
+        </li>
+    </ul>
+</div>
+
+<ng-template #noPosts>
+    <p>No post available</p>
+</ng-template>
+
+<div class="example-end-container">
+</div>

@@ -1,0 +1,83 @@
+<div class="example-container title-container">
+    <h4><strong>Angular Directives</strong></h4>
+</div>
+
+<div class="example-container">
+    <h6>1. Angular Directives</h6>
+    <p>
+        Angular directives are special markers in the DOM that tell Angular to do something with the DOM elements and
+        their children.
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>2. Built-In Directives</h6>
+    <p>
+        Angular provides several built-in directives that help in manipulating the DOM, handling events, and applying
+        styles. Here are some of the commonly used built-in directives:
+    </p>
+
+    <strong>ngIf</strong>
+    <div class="show-example-container">
+        <div *ngIf="isVisible">Content is visible using ngIf</div>
+    </div>
+    <hr>
+    <strong>ngFor</strong>
+    <div class="show-example-container">
+        <ul>
+            <li *ngFor="let item of items">{{ item }}</li>
+        </ul>
+    </div>
+    <hr>
+    <strong>ngSwitch</strong>
+    <div class="show-example-container">
+        <div [ngSwitch]="switchValue">
+            <div *ngSwitchCase="'A'">Case A</div>
+            <div *ngSwitchCase="'B'">Case B</div>
+            <div *ngSwitchDefault>Default Case</div>
+        </div>
+    </div>
+</div>
+
+<div class="example-container">
+    <h6>3. Custom Directives</h6>
+    <p>
+        You can also create your own custom directives. Here is an example of an attribute directive that changes the
+        background color of an element when the mouse hovers over it.
+    </p>
+
+    <div class="show-example-container">
+        <p appHighlight>Hover over this text to see the highlight effect.</p>
+    </div>
+</div>
+
+<div class="example-container">
+    <h6>4. Attribute Directives</h6>
+    <p>
+        Attribute directives change the appearance or behavior of an element, component, or another directive.
+        Unlike structural directives, they do not add or remove elements. A common example is <strong>ngClass</strong>.
+    </p>
+
+    <div class="show-example-container">
+        <button [ngClass]="{ 'activeButton': isButtonActive }" (click)="toggle()">Toggle Class</button>
+    </div>
+</div>
+
+<div class="example-container">
+    <h6>5. Structural Directives</h6>
+    <p>
+        Structural directives change the structure of the DOM by adding or removing elements. They are prefixed with
+        an asterisk (*). Common structural directives include <strong>*ngIf and *ngFor</strong>.
+    </p>
+    <p>Here is the example of <strong>ngContainer</strong> with <strong>ngIf</strong></p>
+
+    <strong>ngContainer and ngIf</strong> &nbsp; <button (click)="showHideContainer()">Show/Hide</button>
+    <div class="show-example-container">
+        <ng-container *ngIf="showOrHideContainer">
+            <p>Content inside container is visible using ngIf</p>
+        </ng-container>
+    </div>
+</div>
+
+<div class="example-end-container">
+</div>

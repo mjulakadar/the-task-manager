@@ -1,0 +1,80 @@
+<div class="example-container title-container">
+    <h4><strong>Data Binding</strong></h4>
+</div>
+
+
+<div class="example-container">
+    <h6>1. One Way Data Binding</h6>
+    <p>
+        One-way data binding in Angular involves binding a component's data to the view. This ensures that any changes
+        in the component's data automatically update the view, but changes in the view do not affect the component's
+        data. This is typically achieved using <strong>interpolation</strong> or <strong>property binding</strong>.
+    </p>
+
+    <div class="show-example-container">
+        {{message}}
+    </div>
+</div>
+
+<div class="example-container">
+    <h6>2. Property Binding</h6>
+    <p>
+        Property binding is used to bind an attribute of an HTML element to a property in the component. It is done
+        using the <strong>`[ ]`</strong> syntax.
+    </p>
+
+    <div class="show-example-container">
+        <button [disabled]="isDisabled">Disabled By Property Binding</button>
+    </div>
+</div>
+
+<div class="example-container">
+    <h6>3. String Interpolation</h6>
+    <p>
+        Interpolation is used to bind a component's property to the view. It is done using the
+        <strong>`{{InterpololationBracket}}`</strong> syntax.
+    </p>
+
+    <div class="show-example-container">
+        {{interpolationMessage}}
+    </div>
+</div>
+
+<div class="example-container">
+    <h6>4. Two Way Data Binding</h6>
+    <p>
+        Two-way data binding in Angular allows for data to be synchronized between the component and the view. Changes
+        in the component's data are reflected in the view, and changes in the view are reflected in the component. This
+        is
+        typically achieved using the <strong>ngModel</strong> directive.
+    </p>
+
+    <p>To use <strong>ngModel</strong>, you need to import the <strong>FormsModule</strong> in your Angular application.
+        You can
+        your property using <strong>[(ngModel)]="propertyName"</strong> syntax.
+    </p>
+
+    <div class="show-example-container">
+        <input [(ngModel)]="name" placeholder="Enter your name">
+        <p>Your name is: {{ name }}</p>
+    </div>
+</div>
+
+<div class="example-container">
+    <h6>5. Event Binding</h6>
+    <p>
+        Event binding in Angular allows you to listen for and respond to user actions, such as <strong>clicks</strong>,
+        <strong>key presses</strong>,
+        <strong>mouse movements</strong>, and other <strong>DOM events</strong>. This is achieved using the
+        <strong>(event)</strong> syntax, where event is the type of DOM
+        event you want to bind to.
+    </p>
+
+    <div class="show-example-container">
+        <button (click)="onButtonClick()">Click Me</button>
+        <p>{{ eventBindingMessage }}</p>
+    </div>
+</div>
+
+<div class="example-end-container">
+</div>

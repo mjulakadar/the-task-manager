@@ -1,0 +1,70 @@
+<div class="example-container title-container">
+    <h4><strong>Services and Dependency Injection</strong></h4>
+</div>
+
+<div class="example-container">
+    <h6>1. Understanding Services</h6>
+    <p>
+        <strong>Services</strong> in Angular are <strong>singleton objects</strong> that are instantiated only once
+        during the lifetime of an application.
+        They are used to share data, logic, and functions across various parts of an application. Services help to
+        encapsulate business logic, data retrieval, and other functionalities which can be reused and tested
+        independently.
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>2. Dependency Injection (DI)</h6>
+    <p>
+        <strong>Dependency Injection (DI)</strong> is a <strong>design pattern</strong> used to implement <strong>IoC
+            (Inversion of Control)</strong>, allowing Angular to
+        create dependencies and inject them into components or services where they are needed. This mechanism improves
+        code modularity, reusability, and testability.
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>3. Creating a Service</h6>
+    <p>
+        You can create a service using Angular CLI. Open your terminal and run the following command:
+    </p>
+
+    <div class="code-block">
+        <pre><code>ng generate service your_service_name</code></pre>
+    </div>
+
+    <p>Implement Service:</p>
+    <div class="code-block">
+        <pre><code>{{_code_implementService}}</code></pre>
+    </div>
+
+    <p>Inject Service in Component:</p>
+    <div class="code-block">
+        <pre><code>{{_code_component_DI}}</code></pre>
+    </div>
+
+    <div class="show-example-container text-normal">
+        <h6>Add Items</h6>
+        <form #itemForm="ngForm" (ngSubmit)="addItem(itemForm)">
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Item</mat-label>
+                <input matInput type="text" id="title" name="title" [(ngModel)]="newItem" required
+                    #newItemInput="ngModel" placeholder="Enter item">
+                <mat-error *ngIf="newItemInput.invalid && (newItemInput.dirty || newItemInput.touched)">
+                    Title is required.
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="itemForm.invalid">Add</button>
+        </form>
+
+        <br>
+        <ul>
+            <li *ngFor="let item of items">{{ item }}</li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="example-end-container">
+</div>

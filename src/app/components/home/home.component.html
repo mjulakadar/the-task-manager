@@ -1,0 +1,74 @@
+<div class="task-manager-container">
+    <header class="header">
+        <strong appCurrentTime class="current-time"></strong>
+    </header>
+
+    <div class="content">
+        <h2 class="animated-text">
+            <!-- <strong>{{ (current_date | customDate).day }}, </strong>{{ (current_date | customDate).month}} -->
+            <strong [appTypingAnimation]="animatedTexts" [typingSpeed]="100" [delayBetweenTexts]="2000"></strong>
+        </h2>
+
+        <div class="center-text form-container">
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Task</mat-label>
+
+                <input [formControl]="taskControl" class="task-input-field" (keydown.enter)="onEnterPress()" matInput
+                    [(ngModel)]="newTask.task" placeholder="Enter your task">
+
+                <mat-icon *ngIf="newTask?.id=='' || newTask?.id==undefined" matPrefix>note_add</mat-icon>
+                <mat-icon class="cancel-icon" *ngIf="newTask?.id!='' && newTask?.id!=undefined" matTooltip="cancel"
+                    matPrefix (click)="cancelEdit()">cancel</mat-icon>
+
+
+                <!-- <mat-chip-list>
+                    <mat-chip *ngFor="let language of languages" [selectable]="true" [removable]="false"
+                        (click)="selectLanguage(language)"
+                        [color]="taskForm.get('language')?.value === language.code ? 'primary' : ''">
+                        {{language.name}}
+                    </mat-chip>
+                </mat-chip-list> -->
+
+                <button matTooltip="start voice input" [applyRecordingAnimations]="isListening" class="mic-button" mat-icon-button
+                    (click)="startVoiceInput()" [disabled]="isListening">
+                    <mat-icon>mic</mat-icon>
+                </button>
+                <button matTooltip="stop voice input" class="stop-mic-button" mat-icon-button (click)="stopVoiceInput()" *ngIf="isListening">
+                    <mat-icon>stop</mat-icon>
+                </button>
+
+            </mat-form-field>
+            <button *ngIf="newTask?.id=='' || newTask?.id==undefined" class="create-button" mat-raised-button
+                color="primary" (click)="addTask()">
+                <mat-icon matPrefix>add</mat-icon> Create
+            </button>
+
+            <button *ngIf="newTask?.id!='' && newTask?.id!=undefined" class="create-button" mat-raised-button
+                color="primary" (click)="updateTaskHanlder()">
+                <mat-icon matPrefix>update</mat-icon> Update
+            </button>
+        </div>
+
+        <div class="task-list-container">
+            <mat-list role="list">
+                <mat-list-item class="text-center" role="listitem" *ngIf="tasks.length==0">
+                    <small>You haven't added any task yet.</small>
+                </mat-list-item>
+
+                <mat-list-item role="listitem" *ngFor="let task of tasks">
+                    <mat-checkbox class="example-margin"
+                        [matTooltip]="task.completed?'mark as incomplete':'mark as complete'"
+                        [(ngModel)]="task.completed" (change)="toggleTaskCompletion(task)"></mat-checkbox>
+                    <span [class.strikethrough]="task.completed">{{ task.task }}</span>
+                    <mat-icon class="mlast close-icon" matTooltip="delete" matPrefix
+                        (click)="deleteTask(task)">close</mat-icon>
+                    <mat-icon class="edit-icon" matTooltip="edit" matPrefix (click)="editTask(task)">edit</mat-icon>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p class="small-text">All rights reserved <strong>&#64;The Task Manager</strong></p>
+    </footer>
+</div>

@@ -1,0 +1,96 @@
+<div class="example-container title-container">
+    <h4><strong>Angular Pipes</strong></h4>
+</div>
+
+<div class="example-container">
+    <h6>1. Basics of Angular Pipes</h6>
+    <p>
+        Pipes in Angular transform data before displaying it in a view. Angular provides several built-in pipes, and you
+        can also create custom pipes to suit your needs. Pipes can be classified into pure and impure based on their
+        behavior.
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>2. Built-In Pipes</h6>
+    <p>Angular comes with several built-in pipes, including:</p>
+    <ul>
+        <li>
+            <strong>DatePipe: </strong>Formats dates.
+        </li>
+        <li>
+            <strong>UpperCasePipe: </strong>Transforms text to uppercase.
+        </li>
+        <li>
+            <strong>LowerCasePipe: </strong>Transforms text to lowercase.
+        </li>
+        <li>
+            <strong>CurrencyPipe: </strong>Formats a number as currency.
+        </li>
+        <li>
+            <strong>DecimalPipe: </strong>Formats a number as decimal..
+        </li>
+        <li>
+            <strong>PercentPipe: </strong> Formats a number as percentage.
+        </li>
+        <li>
+            <strong>SlicePipe: </strong> Slices an array or string.
+        </li>
+        <li>
+            <strong>JsonPipe: </strong> Converts a value to JSON.
+        </li>
+    </ul>
+    <p>
+        <strong>Example Usage of Built-In Pipes</strong>
+        <app-code-box [code_snippet]="_code_snippet_pipes"></app-code-box>
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>3. Custom Pipes</h6>
+    <p>Custom pipes allow you to create your own data transformations. Let's create a custom pipe that transforms a
+        string into title case (the first letter of each word capitalized).</p>
+    <p>
+        <strong>Creating a Custom Pipe</strong>
+        <app-code-box [code_snippet]="_code_snipper_custom_pipe"></app-code-box>
+    </p>
+    <p>
+        <strong>Using a Custom Pipe</strong>
+        <app-code-box [code_snippet]="_code_snippet_custom_pipe_use"></app-code-box>
+    </p>
+    <p>Hi! I am before using the custom Pipe.</p>
+    <p>{{'Hi! I am after using the custom Pipe.' | titlecase}}</p>
+</div>
+
+<div class="example-container">
+    <h6>4. Pure and Impure Pipes</h6>
+    <p>
+        <strong>Pure Pipes: </strong>
+        These are stateless and only depend on their input arguments. They are called only when Angular detects a pure
+        change to the input value (primitive values change or object references change). By default, all pipes are pure.
+    </p>
+    <p>
+        <strong>Impure Pipes: </strong>
+        These are called on every change detection cycle, regardless of whether the input arguments have changed. They
+        can be useful for more complex transformations but should be used sparingly due to performance implications.
+    </p>
+    <br>
+    <p>
+        <strong>Example of an Impure Pipe</strong>
+        <app-code-box [code_snippet]="_code_snippet_impure_pipes"></app-code-box>
+    </p>
+
+    <p>
+        <strong>Use the impure pipe in a template:</strong>
+        <app-code-box [code_snippet]="_code_snippet_impure_pipe_use"></app-code-box>
+        <app-code-box [code_snippet]="_code_snippet_impure_pipe_use_component"></app-code-box>
+    </p>
+
+    <p>Here are <strong>Even numbers</strong> using <strong>`impure-pipes`</strong> from numbers <strong>{{numbers}}</strong></p>
+    <ul>
+        <li *ngFor="let number of numbers | impureFilter:isEven">{{number}}</li>
+    </ul>
+</div>
+
+<div class="example-end-container">
+</div>

@@ -1,0 +1,93 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "No",
+      "author": "jhgjh"
+    },
+    {
+      "id": "d628",
+      "title": "jhgjhgj",
+      "author": "hghgjhg"
+    },
+    {
+      "id": "f8a3",
+      "title": "mnvnb",
+      "author": "bvbvnb"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "Comment 1",
+      "postId": 1
+    },
+    {
+      "id": "2",
+      "body": "Comment 2",
+      "postId": 1
+    }
+  ],
+  "tasks": [
+    {
+      "id": "a99f",
+      "task": "Setup Project Requirments",
+      "completed": true,
+      "date": "2024-07-16T05:58:53.590Z"
+    },
+    {
+      "id": "3cf3",
+      "task": "Implement User Authentication",
+      "completed": true,
+      "date": "2024-07-16T06:00:16.624Z"
+    },
+    {
+      "id": "53f7",
+      "task": "Create a RESTful API",
+      "completed": false,
+      "date": "2024-07-16T06:00:25.067Z"
+    },
+    {
+      "id": "8d16",
+      "task": "Design Database Schema",
+      "completed": true,
+      "date": "2024-07-16T06:00:30.684Z"
+    },
+    {
+      "id": "b2ae",
+      "task": "Implement Task Filtering and Sorting",
+      "completed": true,
+      "date": "2024-07-16T06:00:36.443Z"
+    },
+    {
+      "id": "2a3d",
+      "task": "Set Up CI/CD Pipeline",
+      "completed": false,
+      "date": "2024-07-16T06:00:44.046Z"
+    },
+    {
+      "id": "056d",
+      "task": "Add Project to git repo",
+      "completed": false,
+      "date": "2024-07-16T06:08:26.998Z"
+    },
+    {
+      "id": "b7e9",
+      "task": "Hi Added New OneNot working with combination.",
+      "completed": false,
+      "date": "2024-07-16T09:12:16.235Z"
+    },
+    {
+      "id": "fd69",
+      "task": "This is my task manager you understand.",
+      "completed": false,
+      "date": "2024-07-16T09:13:44.623Z"
+    },
+    {
+      "id": "2c34",
+      "task": "I want to create one task and please write down it please.You can also add something over here.",
+      "completed": false,
+      "date": "2024-07-16T09:14:02.900Z"
+    }
+  ]
+}

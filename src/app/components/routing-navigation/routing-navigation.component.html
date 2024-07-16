@@ -1,0 +1,126 @@
+<div class="example-container title-container">
+    <h4><strong>Angular Routing and Navigation</strong></h4>
+</div>
+
+<div class="example-container">
+    <h6>1. The Basics of Routing</h6>
+    <p>
+        Angular's Router module allows you to navigate between different views or components in your application. It
+        provides a way to define routes and handle navigation through a powerful and flexible system.
+    </p>
+    <br>
+    <p><strong>Setting Up Routing</strong></p>
+    <p>
+        <strong>1. Import RouterModule and Routes:</strong>
+        First, import <strong>RouterModule</strong> and <strong>Routes</strong> from
+        <strong>&#64;angular/router</strong> in your module.
+        <app-code-box [code_snippet]="_code_snippet_routing"></app-code-box>
+    </p>
+    <p>
+        <strong>2. Add RouterOutlet in AppComponent:</strong>
+        In your root component <strong>(AppComponent),</strong> add a <strong>`router-outlet`</strong> tag where you
+        want the routed components to be displayed.
+        <app-code-box [code_snippet]="_code_snippet_router_outlet"></app-code-box>
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>2. Router Outlet</h6>
+    <p>
+        The <strong>router-outlet</strong> directive acts as a placeholder for the routed components. When the route
+        changes, the
+        Angular router dynamically updates the content within the <strong>router-outlet</strong>.
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>3. Route Parameters [<i>Parameter Value: {{userId}}</i>]</h6>
+    <p>
+        Route parameters allow you to pass data through the URL. They are useful for dynamic navigation where you need
+        to display different data based on the route parameter.
+    </p>
+
+    <br>
+    <p>
+        <strong>Defining Route Parameters</strong>
+    </p>
+    <p>
+        <strong>1. Define Route with Parameters:</strong> Use the <strong>:parameter</strong> syntax in the route path.
+        <app-code-box [code_snippet]="_code_snippet_route_param"></app-code-box>
+    </p>
+    <p>
+        <strong>2. Access Route Parameters:</strong> Use the <strong>ActivatedRoute</strong> service to access route
+        parameters in your component.
+        <app-code-box [code_snippet]="_code_snippet_access_parameter"></app-code-box>
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>3. Child Routes</h6>
+    <p>
+        Child routes allow you to create nested routes, which is useful for creating more complex routing structures.
+    </p>
+
+    <br>
+    <p>
+        <strong>Defining Child Routes</strong>
+    </p>
+    <p>
+        <strong>1. Define Child Routes:</strong> Use the <strong>children</strong> property in the route configuration.
+        <app-code-box [code_snippet]="_code_snippet_child_route"></app-code-box>
+    </p>
+    <p>
+        <strong>2. Access Child Routes:</strong> Child routes will be rendered within the
+        <strong>`router-outlet`</strong> of the parent component.
+        <app-code-box [code_snippet]="_code_snippet_access_child_route"></app-code-box>
+        <br>
+        <a routerLink="child-route-1">child-route-1</a> &nbsp;
+        <a routerLink="child-route-2">child-route-2</a>
+        <router-outlet></router-outlet>
+    </p>
+</div>
+
+<div class="example-container">
+    <h6>3. Router Guards</h6>
+    <p>
+        Router guards are used to control access to routes. They can prevent navigation to or from a route based on
+        specific conditions.
+    </p>
+
+    <br>
+    <p>
+        <strong>Types of Router Guards</strong>
+    </p>
+    <p>
+        <strong>1. CanActivate:</strong> Determines if a route can be activated.
+        <app-code-box [code_snippet]="_code_snippet_rg_can_activate"></app-code-box>
+    </p>
+    <p>
+        <strong>2. CanActivateChild:</strong> Determines if child routes can be activated.
+        <app-code-box [code_snippet]="_code_snippet_rg_can_activate_child"></app-code-box>
+    </p>
+    <p>
+        <strong>3. CanDeactivate:</strong> Determines if a route can be deactivated.
+        <app-code-box [code_snippet]="_code_snippet_rg_can_deactivate"></app-code-box>
+    </p>
+    <p>
+        <strong>4. Resolve:</strong> Pre-fetch data before activating a route.
+        <app-code-box [code_snippet]="_code_snippet_rg_resolve"></app-code-box>
+    </p>
+
+    <br>
+    <p>
+        <strong>Using Router Guards</strong>
+    </p>
+    <p>
+        <strong>1. Add Guard to Route:</strong> Apply the guard to routes in the route configuration.
+        <app-code-box [code_snippet]="_code_snippet_rg_usage"></app-code-box>
+    </p>
+    <p>
+        <strong>2. Implement Guard Logic:</strong> In your guard, implement the logic to determine if navigation should
+        be allowed.
+    </p>
+</div>
+
+<div class="example-end-container">
+</div>
