@@ -30,6 +30,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatBadgeModule} from '@angular/material/badge';
+
 import { ServicesDiComponent } from './components/services-di/services-di.component';
 import { CodeBoxComponent } from './components/reusable-components/code-box/code-box.component';
 import { RoutingNavigationComponent } from './components/routing-navigation/routing-navigation.component';
@@ -45,6 +47,7 @@ import { TypingAnimationDirective } from './directives/typing-animation.directiv
 import { CurrentTimeDirective } from './directives/current-time.directive';
 import { UserFlowComponent } from './user-flow/user-flow.component';
 import { RecordingDirective } from './directives/recording.directive';
+import { SkeletonListComponent } from './components/reusable-components/skeleton-list/skeleton-list.component';
 
 @NgModule({
   declarations: [
@@ -76,12 +79,15 @@ import { RecordingDirective } from './directives/recording.directive';
     AngularPipesComponent,
     AngularTestingComponent,
     PostListComponent,
-    UserFlowComponent
+    UserFlowComponent,
+    SkeletonListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
+    //Material UI Modules
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
@@ -96,6 +102,9 @@ import { RecordingDirective } from './directives/recording.directive';
     MatTooltipModule,
     MatSnackBarModule,
     MatChipsModule,
+    MatBadgeModule,
+
+    //Angular Modules
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule

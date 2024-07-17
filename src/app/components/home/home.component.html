@@ -29,15 +29,24 @@
                     </mat-chip>
                 </mat-chip-list> -->
 
-                <button matTooltip="start voice input" [applyRecordingAnimations]="isListening" class="mic-button" mat-icon-button
-                    (click)="startVoiceInput()" [disabled]="isListening">
+                <button matTooltip="start voice input" [applyRecordingAnimations]="isListening" class="mic-button"
+                    mat-icon-button (click)="startVoiceInput()" [disabled]="isListening">
                     <mat-icon>mic</mat-icon>
                 </button>
-                <button matTooltip="stop voice input" class="stop-mic-button" mat-icon-button (click)="stopVoiceInput()" *ngIf="isListening">
+                <button matTooltip="stop voice input" class="stop-mic-button" mat-icon-button (click)="stopVoiceInput()"
+                    *ngIf="isListening">
                     <mat-icon>stop</mat-icon>
                 </button>
 
             </mat-form-field>
+
+            <mat-form-field class="form-field-priority" color="primary">
+                <mat-label>Priority</mat-label>
+                <mat-select [(ngModel)]="newTask.priority">
+                    <mat-option *ngFor="let priority of priorities" [value]="priority">{{priority}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
             <button *ngIf="newTask?.id=='' || newTask?.id==undefined" class="create-button" mat-raised-button
                 color="primary" (click)="addTask()">
                 <mat-icon matPrefix>add</mat-icon> Create
@@ -50,16 +59,23 @@
         </div>
 
         <div class="task-list-container">
-            <mat-list role="list">
+            <ng-container *ngIf="isFetchingInProgress">
+                <app-skeleton-list></app-skeleton-list>
+            </ng-container>
+
+            <mat-list *ngIf="!isFetchingInProgress" role="list">
                 <mat-list-item class="text-center" role="listitem" *ngIf="tasks.length==0">
                     <small>You haven't added any task yet.</small>
                 </mat-list-item>
 
-                <mat-list-item role="listitem" *ngFor="let task of tasks">
+                <mat-list-item class="list-item" role="listitem" *ngFor="let task of tasks">
                     <mat-checkbox class="example-margin"
                         [matTooltip]="task.completed?'mark as incomplete':'mark as complete'"
                         [(ngModel)]="task.completed" (change)="toggleTaskCompletion(task)"></mat-checkbox>
-                    <span [class.strikethrough]="task.completed">{{ task.task }}</span>
+                    <span [ngClass]="getPriorityStyleClass(task.priority)" [matBadge]="task.priority"
+                        matBadgeOverlap="false" matBadgePosition="above after" [class.strikethrough]="task.completed">
+                        {{task.task }}
+                    </span>
                     <mat-icon class="mlast close-icon" matTooltip="delete" matPrefix
                         (click)="deleteTask(task)">close</mat-icon>
                     <mat-icon class="edit-icon" matTooltip="edit" matPrefix (click)="editTask(task)">edit</mat-icon>

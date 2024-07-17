@@ -30,64 +30,53 @@
   ],
   "tasks": [
     {
-      "id": "a99f",
-      "task": "Setup Project Requirments",
+      "id": "ad45",
+      "task": "Deploy Application to Azure App Services",
+      "completed": false,
+      "date": "2024-07-17T05:23:27.972Z",
+      "priority": "Low"
+    },
+    {
+      "id": "7c74",
+      "task": "Add a loader to Angular Application",
+      "completed": false,
+      "date": "2024-07-17T05:24:06.616Z",
+      "priority": "Low"
+    },
+    {
+      "id": "e7ae",
+      "task": "Add priority option while adding the new task",
       "completed": true,
-      "date": "2024-07-16T05:58:53.590Z"
+      "date": "2024-07-17T05:24:40.226Z",
+      "priority": "Medium"
     },
     {
-      "id": "3cf3",
-      "task": "Implement User Authentication",
-      "completed": true,
-      "date": "2024-07-16T06:00:16.624Z"
-    },
-    {
-      "id": "53f7",
-      "task": "Create a RESTful API",
+      "id": "dd2e",
+      "task": "Check if Voice Input is working fine or not.",
       "completed": false,
-      "date": "2024-07-16T06:00:25.067Z"
+      "date": "2024-07-17T05:25:07.504Z",
+      "priority": "High"
     },
     {
-      "id": "8d16",
-      "task": "Design Database Schema",
-      "completed": true,
-      "date": "2024-07-16T06:00:30.684Z"
-    },
-    {
-      "id": "b2ae",
-      "task": "Implement Task Filtering and Sorting",
-      "completed": true,
-      "date": "2024-07-16T06:00:36.443Z"
-    },
-    {
-      "id": "2a3d",
-      "task": "Set Up CI/CD Pipeline",
+      "id": "f9d2",
+      "task": "Update User Data Flow Diagram based on the new changes.",
       "completed": false,
-      "date": "2024-07-16T06:00:44.046Z"
+      "date": "2024-07-17T05:25:38.842Z",
+      "priority": "Low"
     },
     {
-      "id": "056d",
-      "task": "Add Project to git repo",
+      "id": "3f88",
+      "task": "Add the kjkj",
       "completed": false,
-      "date": "2024-07-16T06:08:26.998Z"
+      "date": "2024-07-17T06:44:28.650Z",
+      "priority": "Low"
     },
     {
-      "id": "b7e9",
-      "task": "Hi Added New OneNot working with combination.",
+      "id": "32ed",
+      "task": "Hey, I'm speaking something, can you write please? Please read something more into it.",
       "completed": false,
-      "date": "2024-07-16T09:12:16.235Z"
-    },
-    {
-      "id": "fd69",
-      "task": "This is my task manager you understand.",
-      "completed": false,
-      "date": "2024-07-16T09:13:44.623Z"
-    },
-    {
-      "id": "2c34",
-      "task": "I want to create one task and please write down it please.You can also add something over here.",
-      "completed": false,
-      "date": "2024-07-16T09:14:02.900Z"
+      "date": "2024-07-17T06:44:41.599Z",
+      "priority": "Low"
     }
   ]
 }

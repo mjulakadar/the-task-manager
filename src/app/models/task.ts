@@ -1,3 +1,5 @@
+export type Priority = 'High' | 'Medium' | 'Low';
+
 export interface Task {
     title: string
     description: string
@@ -18,5 +20,6 @@ export interface SimpleTask {
     id?: string,
     task: string,
     completed: boolean,
-    date: Date
+    date: Date,
+    priority: Priority
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SimpleTask } from '../../models/task';
+import { Priority, SimpleTask } from '../../models/task';
 import { TaskService } from '../../services/task.service';
 import { getCustomDate } from '../../Utility/custom-date.utility';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   newTask: SimpleTask = {
     task: '',
     completed: false,
-    date: new Date()
+    date: new Date(),
+    priority: 'Low'
   };
   tasks: SimpleTask[] = [];
   animatedTexts: string[] =
@@ -31,6 +32,8 @@ export class HomeComponent implements OnInit {
       "Try adding some new Tasks!"
     ];
 
+  isFetchingInProgress = true;
+  priorities: Priority[] = ['Low', 'Medium', 'High'];
   isListening = false;
   taskControl = new FormControl();
   languages: SpeechLanguage[] = [{ name: 'hindi', code: 'hi-IN' }, { name: 'english', code: 'en-US' }];
@@ -54,7 +57,10 @@ export class HomeComponent implements OnInit {
   //end region
 
   ngOnInit() {
-    this.fetchPosts();
+    setTimeout(() => {
+      this.fetchPosts();
+      this.isFetchingInProgress = false;
+    }, 3000);
   }
 
   showSnackBar(message: string, action: string, duration: number) {
@@ -85,7 +91,8 @@ export class HomeComponent implements OnInit {
       const dataToPost: SimpleTask = {
         completed: false,
         task: this.newTask.task,
-        date: new Date()
+        date: new Date(),
+        priority: this.newTask.priority
       };
 
       this.taskService.addTask(this.newTask).subscribe(task => {
@@ -140,7 +147,23 @@ export class HomeComponent implements OnInit {
     this.newTask = {
       task: '',
       completed: false,
-      date: new Date()
+      date: new Date(),
+      priority: 'Low'
+    }
+  }
+
+  //Get Priority Styles
+  getPriorityStyleClass(priority: Priority) {
+    if (!priority) return 'low-priority-badge';
+
+    switch (priority) {
+      case 'Low':
+        return 'low-priority-badge';
+      case 'Medium':
+        return 'medium-priority-badge';
+      case 'High':
+        return 'high-priority-badge';
+      default: return 'low-priority-badge';
     }
   }
 }
