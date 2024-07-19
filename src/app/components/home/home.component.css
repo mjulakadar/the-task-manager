@@ -25,7 +25,7 @@
 }
 
 ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background-color: transparent!important;
+    background-color: transparent !important;
     border-radius: 0;
     border-top: 1px solid #847376;
 }
@@ -175,4 +175,18 @@ button[mat-icon-button]:disabled {
 
 .list-item {
     padding-left: 0px;
+}
+
+.filter-container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-by-container,
+.sort-by-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

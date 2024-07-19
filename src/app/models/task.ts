@@ -1,4 +1,5 @@
 export type Priority = 'High' | 'Medium' | 'Low';
+export type Sorting = 'Priority' | 'RecentyCreated';
 
 export interface Task {
     title: string

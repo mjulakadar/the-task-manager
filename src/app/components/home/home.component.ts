@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Priority, SimpleTask } from '../../models/task';
+import { Priority, SimpleTask, Sorting } from '../../models/task';
 import { TaskService } from '../../services/task.service';
 import { getCustomDate } from '../../Utility/custom-date.utility';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -24,7 +24,13 @@ export class HomeComponent implements OnInit {
     date: new Date(),
     priority: 'Low'
   };
+
   tasks: SimpleTask[] = [];
+  initialTasksData: SimpleTask[] = [];
+  priorityFilters: Priority[] = [];
+  priorityFiltersChips = [{ name: 'High', selected: false }, { name: 'Medium', selected: false }, { name: 'Low', selected: false }];
+  sortByChips = [{ name: 'Priority', selected: false }, { name: 'Recently Created', selected: false }];
+
   animatedTexts: string[] =
     [
       "Welcome to The Task Manager",
@@ -74,8 +80,87 @@ export class HomeComponent implements OnInit {
       if (data) {
         const fetchedSimpleTasks: SimpleTask[] = data as SimpleTask[];
         this.tasks = fetchedSimpleTasks.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        this.initialTasksData = [...this.tasks];
+        if (this.priorityFilters && this.priorityFilters.length > 0) {
+          this.filterByPriority();
+        }
       }
     })
+  }
+
+  filterByPriority() {
+    const filteredTasks: SimpleTask[] = [];
+    if (this.priorityFilters.includes('High')) {
+      filteredTasks.push(...(this.initialTasksData.filter(x => x.priority === 'High') || []));
+    }
+
+    if (this.priorityFilters.includes('Medium')) {
+      filteredTasks.push(...(this.initialTasksData.filter(x => x.priority === 'Medium') || []));
+    }
+
+    if (this.priorityFilters.includes('Low')) {
+      filteredTasks.push(...(this.initialTasksData.filter(x => x.priority === 'Low') || []));
+    }
+
+    if (filteredTasks && filteredTasks.length > 0) {
+      this.tasks = filteredTasks;
+    } else {
+      this.tasks = [...this.initialTasksData];
+    }
+  }
+
+  applySortingByChips() {
+    const sortByData = this.sortByChips.find(c => c.selected == true);
+    if (!sortByData) {
+      //default sorting with recently created
+      this.tasks.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      return;
+    }
+
+    if (sortByData.name === 'Priority') {
+      this.tasks.sort((a, b) => {
+        const priorityOrder = { 'High': 1, 'Medium': 2, 'Low': 3 };
+
+        if (priorityOrder[a.priority] !== priorityOrder[b.priority]) {
+          return priorityOrder[a.priority] - priorityOrder[b.priority];
+        } else {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        }
+      })
+      return;
+    }
+
+    if (sortByData.name === 'Recently Created') {
+      this.tasks.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    }
+  }
+
+  toggleChips(chip: any) {
+    if (chip) {
+      const c = this.priorityFiltersChips.find(x => x.name === chip.name);
+      if (c) {
+        c.selected = !c.selected;
+        if (c.selected) {
+          this.priorityFilters.push(c.name as Priority);
+        } else {
+          this.priorityFilters = this.priorityFilters.filter(x => x != c.name as Priority);
+        }
+
+        this.filterByPriority();
+      }
+    }
+  }
+
+  toggleSortBy(chip: any) {
+    if (chip) {
+      const c = this.sortByChips.find(x => x.name === chip.name);
+      if (c) {
+        c.selected = !c.selected;
+        const remainingChips = this.sortByChips.filter(x => x.name != c.name);
+        remainingChips.forEach(item => item.selected = false);
+        this.applySortingByChips();
+      }
+    }
   }
 
   onEnterPress() {

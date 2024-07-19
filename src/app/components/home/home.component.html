@@ -20,15 +20,6 @@
                 <mat-icon class="cancel-icon" *ngIf="newTask?.id!='' && newTask?.id!=undefined" matTooltip="cancel"
                     matPrefix (click)="cancelEdit()">cancel</mat-icon>
 
-
-                <!-- <mat-chip-list>
-                    <mat-chip *ngFor="let language of languages" [selectable]="true" [removable]="false"
-                        (click)="selectLanguage(language)"
-                        [color]="taskForm.get('language')?.value === language.code ? 'primary' : ''">
-                        {{language.name}}
-                    </mat-chip>
-                </mat-chip-list> -->
-
                 <button matTooltip="start voice input" [applyRecordingAnimations]="isListening" class="mic-button"
                     mat-icon-button (click)="startVoiceInput()" [disabled]="isListening">
                     <mat-icon>mic</mat-icon>
@@ -56,6 +47,29 @@
                 color="primary" (click)="updateTaskHanlder()">
                 <mat-icon matPrefix>update</mat-icon> Update
             </button>
+        </div>
+
+        <div class="filter-container">
+            <div class="filter-by-container">
+                <strong>Filter By: </strong>
+                <mat-chip-listbox selectable multiple>
+                    <mat-chip-option [selectable]="true" [selected]="chip.selected" (click)="toggleChips(chip)"
+                        aria-multiselectable="true" *ngFor="let chip of priorityFiltersChips"
+                        [color]="chip.selected ? 'primary' : 'default'">
+                        {{chip.name}}
+                    </mat-chip-option>
+                </mat-chip-listbox>
+            </div>
+            <div class="sort-by-container">
+                <strong>Sort By: </strong>
+                <mat-chip-listbox selectable>
+                    <mat-chip-option [selectable]="true" [selected]="s.selected" (click)="toggleSortBy(s)"
+                        aria-multiselectable="true" *ngFor="let s of sortByChips"
+                        [color]="s.selected ? 'primary' : 'default'">
+                        {{s.name}}
+                    </mat-chip-option>
+                </mat-chip-listbox>
+            </div>
         </div>
 
         <div class="task-list-container">
